@@ -30,6 +30,17 @@ app.post('/postData',  (req, res) =>{
 
 })
 
+app.get('/getData', (req,res)=>{
+    con.query('SELECT * FROM salida', (err, result)=>{
+        if (err){
+            res.status(400).send(err);
+        }else{
+            res.status(200).send(result.rows);
+
+        }
+    })
+})
+
 app.listen (4000,()=>{
     console.log('Server is running on port 4000');
 })
